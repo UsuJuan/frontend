@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions'
 import { getUsuariosLoading, getUsuariosSuccess, getUsuariosError } from '../actions/usuariosActions'
 import { getAbbrevetionMonth } from '../../utils'
 
-const initialState = { data: [['Fecha', '']], loading: false, error: '' }
+const initialState = { data: [['Fecha', 'usuarios', { role: 'annotation' }]], loading: false, error: '' }
 
 export const UsuariosReducer = handleActions({
     [getUsuariosLoading]: (state, action) => {
@@ -16,7 +16,7 @@ export const UsuariosReducer = handleActions({
         let acumulator = 0
         const newData = action.payload.map(item => {
             acumulator += item.celulares.length
-            return [`${item._id.day} ${getAbbrevetionMonth(item._id.month)}`, acumulator]
+            return [`${item._id.day} ${getAbbrevetionMonth(item._id.month)}`, acumulator, acumulator]
         })
         return {
             ...state,

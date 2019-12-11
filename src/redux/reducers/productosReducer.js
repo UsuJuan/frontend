@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions'
 import { getProductosLoading, getProductosSuccess, getProductosError } from '../actions/productosActions'
 import { getAbbrevetionMonth } from '../../utils'
 
-const initialState = { data: [['Fecha', 'Productos']], loading: false, error: '' }
+const initialState = { data: [['Fecha', 'Productos', { role: 'annotation' }]], loading: false, error: '' }
 
 export const ProductosReducer = handleActions({
     [getProductosLoading]: (state, action) => {
@@ -14,7 +14,7 @@ export const ProductosReducer = handleActions({
     },
     [getProductosSuccess]: (state, action) => {
         const newData = action.payload.map(item => {
-            return [`${item._id.day} ${getAbbrevetionMonth(item._id.month)}`, item.total]
+            return [`${item._id.day} ${getAbbrevetionMonth(item._id.month)}`, item.total, item.total]
         })
         return {
             ...state,
