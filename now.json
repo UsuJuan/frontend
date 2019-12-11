@@ -1,5 +1,0 @@
-{
-    "env": {
-      "REACT_APP_API_URL": "https://aiyu-backend-dashboard.herokuapp.com/api"
-    }
-  }

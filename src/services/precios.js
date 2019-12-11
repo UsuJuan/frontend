@@ -6,7 +6,7 @@ export const getPrecios = async () => {
     try {
         response = await  axios({
             method: 'GET',
-            url: `${process.env.REACT_APP_API_URL}/ventas/precios`
+            url: `https://aiyu-backend-dashboard.herokuapp.com/api/ventas/precios`
         })
     } catch (err) {
         // pass error
