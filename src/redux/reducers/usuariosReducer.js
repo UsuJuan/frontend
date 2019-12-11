@@ -1,20 +1,22 @@
 import { handleActions } from 'redux-actions'
-import { getPedidosLoading, getPedidosSuccess, getPedidosError } from '../actions/pedidosActions'
+import { getUsuariosLoading, getUsuariosSuccess, getUsuariosError } from '../actions/usuariosActions'
 import { getAbbrevetionMonth } from '../../utils'
 
 const initialState = { data: [['Fecha', '']], loading: false, error: '' }
 
-export const PedidosReducer = handleActions({
-    [getPedidosLoading]: (state, action) => {
+export const UsuariosReducer = handleActions({
+    [getUsuariosLoading]: (state, action) => {
         return { 
             ...state,
             loading: true,
             error:''
         }
     },
-    [getPedidosSuccess]: (state, action) => {
+    [getUsuariosSuccess]: (state, action) => {
+        let acumulator = 0
         const newData = action.payload.map(item => {
-            return [`${item._id.day} ${getAbbrevetionMonth(item._id.month)}`, item.count]
+            acumulator += item.celulares.length
+            return [`${item._id.day} ${getAbbrevetionMonth(item._id.month)}`, acumulator]
         })
         return {
             ...state,
@@ -22,7 +24,7 @@ export const PedidosReducer = handleActions({
             loading: false
         }
     }, 
-    [getPedidosError]: (state, action) => {
+    [getUsuariosError]: (state, action) => {
         return {
             ...state,
             loading: false,

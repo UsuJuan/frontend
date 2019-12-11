@@ -3,12 +3,14 @@ import thunk from 'redux-thunk'
 import { PedidosReducer } from '../redux/reducers/pedidosReducer'
 import { PreciosReducer } from '../redux/reducers/preciosReducer'
 import { ProductosReducer } from '../redux/reducers/productosReducer'
+import { UsuariosReducer } from '../redux/reducers/usuariosReducer'
 
 
 const reducers = combineReducers({
 	pedidos: PedidosReducer,
 	precios: PreciosReducer,
-	productos: ProductosReducer
+	productos: ProductosReducer,
+	usuarios: UsuariosReducer
 })
 
 const composeEnhancers =
