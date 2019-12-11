@@ -1,0 +1,5 @@
+{
+    "env": {
+      "DATABASE_URL": "https://aiyu-backend-dashboard.herokuapp.com/api"
+    }
+  }
