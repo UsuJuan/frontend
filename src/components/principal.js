@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { loadPedidos } from '../redux/actions/pedidosActions'
 import { loadPrecios } from '../redux/actions/preciosActions'
 import { loadProductos } from '../redux/actions/productosActions'
-import { MDBContainer, MDBRow, MDBCard, MDBCardTitle } from 'mdbreact'
+import { MDBContainer, MDBRow, MDBCard, MDBCardTitle, MDBBtn } from 'mdbreact'
 import { loadUsuarios } from '../redux/actions/usuariosActions'
 
 const Principal = (props) => {
@@ -31,6 +31,13 @@ const Principal = (props) => {
             <MDBCard className="card-body">
                 <MDBCardTitle>DASHBOARD AIYU</MDBCardTitle>
             </MDBCard>
+        </MDBRow>
+        <MDBRow className="mb-2" >
+            <MDBBtn
+                href="https://aiyu-backend-dashboard.herokuapp.com/api/ventas/excel"
+                color="success" >
+                Excel ventas
+            </MDBBtn>
         </MDBRow>
         <MDBRow className="mb-3" >
             <h3 className="text-center w-100" >Pedidos por día</h3>
