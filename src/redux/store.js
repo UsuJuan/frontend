@@ -4,13 +4,15 @@ import { PedidosReducer } from '../redux/reducers/pedidosReducer'
 import { PreciosReducer } from '../redux/reducers/preciosReducer'
 import { ProductosReducer } from '../redux/reducers/productosReducer'
 import { UsuariosReducer } from '../redux/reducers/usuariosReducer'
+import { CategoriasReducer } from './reducers/categoriasReducer'
 
 
 const reducers = combineReducers({
 	pedidos: PedidosReducer,
 	precios: PreciosReducer,
 	productos: ProductosReducer,
-	usuarios: UsuariosReducer
+	usuarios: UsuariosReducer,
+	categorias: CategoriasReducer
 })
 
 const composeEnhancers =

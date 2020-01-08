@@ -6,6 +6,7 @@ import { loadPrecios } from '../redux/actions/preciosActions'
 import { loadProductos } from '../redux/actions/productosActions'
 import { MDBContainer, MDBRow, MDBCard, MDBCardTitle, MDBBtn } from 'mdbreact'
 import { loadUsuarios } from '../redux/actions/usuariosActions'
+import { loadCategorias } from '../redux/actions/categoriasActions'
 
 const Principal = (props) => {
 
@@ -14,16 +15,11 @@ const Principal = (props) => {
         props.getPrecios()
         props.getProductos()
         props.getUsuarios()
+        props.getCategorias()
     }, [])
 
     const getDay = (data, type) => {
-        if (data.length > 1){
-            if (type === 'first'){
-                return data[1][0]
-            } else {
-                return data[data.length-1][0]
-            }
-        }
+        if (data.length > 1) return (type === 'first') ? data[1][0] : data[data.length - 1][0]
     }
 
     return(<MDBContainer className="mb-5" >
@@ -151,6 +147,32 @@ const Principal = (props) => {
                 /> 
             </Fragment>}
         </MDBRow>
+        <MDBRow className="mb-3">
+            <h3 className="text-center w-100" >Categorias</h3>
+            <h5 className="w-100 text-left" >Todas las categorias</h5>
+            {props.categorias.length > 1 && <Fragment>
+                {/* <span className="w-100 text-left" >Desde {getDay(props.usuarios,'first')} hasta {getDay(props.usuarios,'last')}</span> */}
+
+                <Chart
+                    width={'100%'}
+                    height={'300px'}
+                    chartType="PieChart"
+                    loader={<div>Cargando...</div>}
+                    data={props.categorias}
+                    options={{
+                        is3D: true,
+                        chartArea: {
+                            top: '10%', // set this to adjust the legend width
+                            left: '8%',  // set this eventually, to adjust the left margin
+                            height: "80%",
+                            width: "100%"
+                        },
+                        pointsVisible: true
+                    }}
+                    rootProps={{ 'data-testid': '2' }}
+                />
+            </Fragment>}
+        </MDBRow>
     </MDBContainer>)
 }
 
@@ -159,7 +181,8 @@ const mapStateToProps = state => {
         pedidos : state.pedidos.data,
         precios : state.precios.data,
         productos : state.productos.data,
-        usuarios: state.usuarios.data
+        usuarios: state.usuarios.data,
+        categorias: state.categorias.data
     }
 }
 
@@ -168,7 +191,8 @@ const mapDispatchToProps = dispatch => {
         getPedidos: () => dispatch(loadPedidos()),
         getPrecios: () => dispatch(loadPrecios()),
         getProductos: () => dispatch(loadProductos()),
-        getUsuarios: () => dispatch(loadUsuarios())
+        getUsuarios: () => dispatch(loadUsuarios()),
+        getCategorias: () => dispatch(loadCategorias())
     }
 }
 
