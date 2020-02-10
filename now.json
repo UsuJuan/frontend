@@ -1,0 +1,10 @@
+{
+    "env": {
+        "REACT_APP_URL_API": "@react_app_url_api"
+    },
+    "build": {
+        "env": {
+            "REACT_APP_URL_API": "@react_app_url_api"
+        }
+    }
+}
