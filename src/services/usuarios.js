@@ -6,7 +6,7 @@ export const getUsuarios = async () => {
     try {
         response = await  axios({
             method: 'GET',
-            url: `https://aiyu-backend-dashboard.herokuapp.com/api/ventas/usuarios`
+            url: `${process.env.REACT_APP_URL_API}/api/ventas/usuarios`
         })
     } catch (err) {
         // pass error
